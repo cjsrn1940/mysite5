@@ -56,6 +56,16 @@
 			where no = #{no}
 		]]>
 	</update>
+	
+	
+	<!-- 회원정보 가져오기(아이디 확인용) -->
+	<select id="selectUserById" parameterType="String" resultType="com.javaex.vo.UserVo">
+		<![CDATA[
+			select no, id
+			from users
+			where id = #{id}
+		]]>
+	</select>
 
 
 

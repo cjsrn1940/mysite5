@@ -45,6 +45,21 @@ public class UserService {
 		return count;
 		
 	}
+	
+	//회원가입폼에서 아이디 중복 체크
+	public boolean getUser(String id) {
+		System.out.println("[UserService.getUser()]");
+		
+		UserVo userVo = userDao.selectUser(id);
+		
+		if(userVo == null) {
+			return true;
+		} else {
+			return false;
+		}
+		
+		
+	}
 }
 
 

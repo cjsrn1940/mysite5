@@ -42,4 +42,16 @@ public class UserDao {
 		int count = sqlSession.insert("user.modify", userVo);
 		return count;
 	}
+	
+	
+	//회원정보 가져오기 --> id로 중복체크
+	public UserVo selectUser(String id) {
+		System.out.println("[UserDao.selectUser()]");
+		System.out.println(id);
+		
+		//UserVo userVo = sqlSession.selectOne("user.selectUserById", id);
+		//System.out.println(userVo.getId());
+		
+		return sqlSession.selectOne("user.selectUserById", id);
+	}
 }

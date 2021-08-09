@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.UserService;
 import com.javaex.vo.UserVo;
@@ -104,6 +106,30 @@ public class UserController {
 		return "redirect:/main";
 	}
 	
+	
+	//아이디 중복 체크(ajax)
+	@ResponseBody //응답할때
+	@RequestMapping(value="/user/idCheck", method = {RequestMethod.GET, RequestMethod.POST})
+	public boolean idCheck(@RequestParam("id") String id) {
+		System.out.println("[UserController.idCheck()]");
+		
+		boolean state = userService.getUser(id);
+		
+		return state;
+	}
+	
+	//json방식으로 데이터 받기
+	@ResponseBody
+	@RequestMapping(value="/user/join2", method = {RequestMethod.GET, RequestMethod.POST})
+	public int join2(@RequestBody UserVo userVo) { //json방식으로 준 데이터를 받을 때 사용
+		System.out.println("[UserController.join2()]");
+		
+		System.out.println(userVo);
+		
+		int count = userService.joinUser(userVo);
+		
+		return count;
+	}
 	
 	
 	
