@@ -216,7 +216,7 @@ $("#btnIdCheck").on("click", function() {
 		if(state == true) {
 			$("#idcheckMsg").html("사용가능한 id 입니다")
 		} else {
-			$("#idcheckMsg").html("사용불가능한 id 입니다")
+			$("#idcheckMsg").html("사용불가능가능한 id 입니다")
 		}
 			
 		},
